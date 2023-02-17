@@ -38,14 +38,24 @@ async def senha(ctx, senha:Option(str, "Digite a senha!", required = True)):
 @bot.slash_command(name = "inicio")
 async def inicio(ctx):
     await ctx.send(file=discord.File("Recursos/Teste.png"))
-    
-    embed = discord.Embed(title = "【Ｂｅｍ　ｖｉｎｄｏ　ａｏ　Ｓｉｎｄｉｃａｔｏ！】", description ="Frase motivacional 1", color = discord.Color.gold())
-    embed.add_field(name="Titulo 1", value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium sapien quis volutpat blandit. Nullam eu mattis urna. ")
-    embed.add_field(name="Titulo 3", value="Quisque ac velit vitae massa suscipit condimentum. In vitae mattis libero. Donec blandit mi nec ornare fermentum.")
-    embed.set_footer(text="Footer", icon_url= ctx.user.avatar)
+    await ctx.send(":star:【Ｂｅｍ　ｖｉｎｄｏ　ａｏ　Ｓｉｎｄｉｃａｔｏ！】:star:")
+    await ctx.send("================================= /=/        /=/ =================================")
+    await ctx.send(":coin: Não acredite em tudo, principalmente na 'verdade' ")
+    await ctx.send(":coin: **Sindicato** aceita somente pessoas que podem trazer algum tipo conhecimento ou entreterimento para os demais membros. Sinta-se honrado ao ser convidado para ingressar.")
+    await ctx.send(":coin: Para ter acesso ao servidor você precisa fornecer a **senha**, que diariamente é trocada.")
+    await ctx.send(":coin: Caso tenha a senha, utilize o comando `/senha` e digite-a corretamente.")
+    await ctx.send("================================= /=/ Regras /=/ =================================")
+    await ctx.send("𝟷º Leia as regras!")
+    await ctx.send("𝟸º Respeite todos os membros do servidor. Se você não conhece o membro não tente fazer brincadeiras com o mesmo. Lembre-se você provalmente é um **ningêm** para a maioria dos outros membros quando entrar no servidor.")
+    await ctx.send("*Obs: caso precise de ajuda mande mensagem para um dos* <@&1075294781586026566>")
+    await ctx.send("𝟹º Mande mensagens em seus respectivos canais! Bots no canal de Bots, assuntos específicos em canais do mesmo.")
+    embed = discord.Embed(title = "【Ｌｅｍｂｒｅ－ｓｅ】", description ="Não acredite em tudo, principalmente na 'verdade'.", color = discord.Color.gold())
+    embed.add_field(name="Seja Feliz", value="Sorria e acene.")
+    embed.add_field(name="Aceite", value="Seja sindicalizado.")
+    embed.set_footer(text="Footer", icon_url= "https://image.noelshack.com/fichiers/2017/41/3/1507739509-emote-blitz-does-not-compute.png")
     embed.set_image(url="https://i.imgur.com/5ZO3qC9.png")
     #embed.set_author(name=ctx.author.name, icon_url=ctx.user.avatar)
     await ctx.send(embed=embed)
 
-    
+
 bot.run(Key)
