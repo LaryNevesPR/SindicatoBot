@@ -1,25 +1,38 @@
-import discord
+import discord, os, random
 #from discord.commands import Option
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord.commands import Option
 from key import Key
+from datetime import datetime
+
 
 intents = discord.Intents().all()
 bot = commands.Bot(intents=intents)
 
-Senha = "paz é um conto de fadas"
+Senha = 6969
+
+for filename in os.listdir("./Comandos"):
+    if filename.endswith(".py") and not filename.startswith("__"):
+        bot.load_extension("Comandos.{0}".format(filename[:-3]))
 
 @bot.event
 async def on_ready():
     print("I'm ready to go!")
+    printer.start()
 
-@bot.event
-async def on_member_join(member):
-    channel = bot.get_channel(1075182206231785624)
-    role = discord.utils.get(member.guild.roles, name ="Membro")
-    await member.add_roles(role)
-    guild = member.guild
-    await channel.edit(name=f"Membros: {guild.member_count}")
+
+@tasks.loop(seconds= 10)
+async def printer():
+    channel = bot.get_channel(723623863057121281)
+    global Senha
+    Senha = random.randint(10_000,99_999)
+    print(Senha)
+    #await channel.edit(name=f"Senha: {Senha}")
+    #await channel.send(Senha)
+
+@bot.slash_command(name="verificar_senha", description="Somente admins.")
+async def verfsenha(ctx):
+    await ctx.respond(f'Senha: {Senha}', ephemeral= True)
 
 @bot.slash_command(name="senha", description= "Senha necessária para se tornar um membro.")
 async def senha(ctx, senha:Option(str, "Digite a senha!", required = True)):
@@ -33,7 +46,7 @@ async def senha(ctx, senha:Option(str, "Digite a senha!", required = True)):
         await ctx.respond(f'Você já é um membro!', ephemeral= True)
         return
     
-    await ctx.respond(f'{ctx.author}', ephemeral= True)
+    #await ctx.respond(f'{ctx.author}', ephemeral= True)'''
 
 @bot.slash_command(name = "inicio")
 async def inicio(ctx):
